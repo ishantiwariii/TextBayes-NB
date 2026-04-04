@@ -1,6 +1,11 @@
 import streamlit as st
 import pickle 
 import nltk 
+
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('stopwords')
+
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 import string
@@ -105,7 +110,7 @@ body {
 
 # ---------- HEADER ----------
 st.markdown('<div class="logo">', unsafe_allow_html=True)
-st.image(r"D:\ML Projects\TextBayes\TextBayes_logo.png", width=90)
+st.image("TextBayes_logo.png", width=90)
 st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown('<div class="title">TextBayes</div>', unsafe_allow_html=True)
@@ -117,8 +122,8 @@ st.markdown('<div class="box">', unsafe_allow_html=True)
 input_sms = st.text_area("✉️ Enter your message", height=120)
 
 # ---------- MODEL ----------
-tfidf = pickle.load(open(r'D:\ML Projects\TextBayes\vectorizer.pkl', 'rb'))
-model = pickle.load(open(r'D:\ML Projects\TextBayes\model.pkl', 'rb'))
+tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 def transform_text(text):
     text = text.lower()
